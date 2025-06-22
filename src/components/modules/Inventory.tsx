@@ -20,7 +20,7 @@ export default function Inventory() {
       key: 'stockQuantity', 
       label: 'Stock', 
       sortable: true,
-      render: (value: number, row: any) => (
+      render: (value: number, row: { minStockLevel: number }) => (
         <div className="flex items-center">
           <span className="mr-2">{value}</span>
           {value <= row.minStockLevel && (
@@ -49,6 +49,11 @@ export default function Inventory() {
     }
   ];
 
+  interface MaterialRow {
+    unit: string;
+    [key: string]: string | number;
+  }
+
   const materialColumns = [
     { key: 'name', label: 'Material Name', sortable: true },
     { 
@@ -65,7 +70,7 @@ export default function Inventory() {
       key: 'stockQuantity', 
       label: 'Stock', 
       sortable: true,
-      render: (value: number, row: any) => `${value} ${row.unit}`
+      render: (value: number, row: MaterialRow) => `${value} ${row.unit}`
     },
     { 
       key: 'unitCost', 

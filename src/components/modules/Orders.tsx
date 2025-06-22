@@ -51,7 +51,7 @@ export default function Orders() {
     {
       key: 'actions',
       label: 'Actions',
-      render: (_, row) => (
+      render: () => (
         <div className="flex space-x-2">
           <button className="p-1 text-blue-600 hover:bg-blue-50 rounded">
             <Eye className="h-4 w-4" />
